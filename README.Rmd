@@ -13,7 +13,9 @@ The U.S. Embassy and Consulates General in India maintain an air quality monitor
 
 In this repository I have made a copy of these files and provide a R code for wrangling them to get a single csv with all measures for Delhi, Mumbai, Kolkata, Hyderabad and Chennai. Refer to original source for licensing questions. 
 
-You will find the raw data in inst/extdata and my wrangling code in inst. I have made a R package out of the data so that my fellow R users can easily play with the data.
+You will find the raw data [in this folder](inst/extdata) and my wrangling code is [here](inst/pm25_consulate.R). The resulting csv is [here](inst/pm25USA.csv).
+
+I have made a R package out of the data so that my fellow R users can easily play with the data.
 
 ```{r, message=FALSE, warning=FALSE}
 library("usaqmindia")
