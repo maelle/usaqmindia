@@ -1,9 +1,13 @@
 Package: usaqmindia
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Provides Data from the U.S. Embassy and Consulate Air Quality Monitors in
+    India
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: Who to complain to <yourfault@somewhere.net>
+uthors@R: person("Maëlle", "Salmon", email = "maelle.salmon@yahoo.se", role =
+    c("aut", "cre"))
 Description: More about what it does (maybe more than one line)
-License: What license is it under?
+License: GPL (>= 2)
 LazyData: TRUE
+URL: http://github.com/masalmon/usaqmindia
+BugReports: http://github.com/masalmon/usaqmindia/issues
+RoxygenNote: 5.0.1

@@ -5,4 +5,31 @@ The U.S. Embassy and Consulates General in India maintain an air quality monitor
 
 In this repository I have made a copy of these files and provide a R code for wrangling them to get a single csv with all measures for Delhi, Mumbai, Kolkata, Hyderabad and Chennai. Refer to original source for licensing questions.
 
-You will find the raw data in inst/extdata and my wrangling code in inst. I have made a R package out of the data so that my fellow R users can easily play with the data, and I will eventually show to examples of visualizations below.
+You will find the raw data in inst/extdata and my wrangling code in inst. I have made a R package out of the data so that my fellow R users can easily play with the data.
+
+``` r
+library("usaqmindia")
+library("ggplot2")
+library("dplyr")
+data(pm25_india)
+knitr::kable(head(pm25_india))
+```
+
+| datetime            | city  |   conc|
+|:--------------------|:------|------:|
+| 2013-01-01 01:00:00 | Delhi |  324.4|
+| 2013-01-01 02:00:00 | Delhi |  366.8|
+| 2013-01-01 03:00:00 | Delhi |  290.7|
+| 2013-01-01 04:00:00 | Delhi |  245.4|
+| 2013-01-01 05:00:00 | Delhi |  220.3|
+| 2013-01-01 06:00:00 | Delhi |  180.2|
+
+``` r
+ggplot(pm25_india) +
+  geom_point(aes(datetime, conc)) +
+  facet_grid(city ~ .) +
+  ggtitle("US Air Quality Monitoring in India")+
+  ylab(expression(paste("PM2.5 concentration (", mu, "g/",m^3,")")))
+```
+
+![](README_files/figure-markdown_github/unnamed-chunk-1-1.png)<!-- -->
