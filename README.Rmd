@@ -31,7 +31,6 @@ Here is an example plot of daily average concentrations (see the code here):
 
 ```{r, message=FALSE, warning=FALSE}
 library("usaqmindia")
-library("ggiraph")
-p <- redo_plot()
-ggiraph(code = {print(p)})
+redo_plot()
+
 ```

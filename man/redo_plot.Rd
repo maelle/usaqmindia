@@ -13,7 +13,6 @@ a ggplot graph
 Re-do the time series plot for all cities
 }
 \examples{
-p <- redo_plot()
-ggiraph::ggiraph(code = {print(p)})
+redo_plot()
 }
 
