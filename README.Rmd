@@ -2,6 +2,7 @@
 title: "usaqmindia R package"
 author: "Maëlle Salmon"
 date: "`r Sys.Date()`"
+always_allow_html: yes
 output:
   md_document:
     variant: markdown_github
@@ -17,15 +18,20 @@ You will find the raw data [in this folder](inst/extdata) and my wrangling code 
 
 I have made a R package out of the data so that my fellow R users can easily play with the data.
 
+The data is in a long format:
+
 ```{r, message=FALSE, warning=FALSE}
 library("usaqmindia")
-library("ggplot2")
 library("dplyr")
-data(pm25_india)
-knitr::kable(head(pm25_india))
-ggplot(pm25_india) +
-  geom_point(aes(datetime, conc)) +
-  facet_grid(city ~ .) +
-  ggtitle("US Air Quality Monitoring in India")+
-  ylab(expression(paste("PM2.5 concentration (", mu, "g/",m^3,")")))
+data("pm25_india")
+pm25_india %>% head(n = 20) %>% knitr::kable()
+```
+
+Here is an example plot of daily average concentrations (see the code here):
+
+```{r, message=FALSE, warning=FALSE}
+library("usaqmindia")
+library("ggiraph")
+p <- redo_plot()
+ggiraph(code = {print(p)})
 ```
