@@ -4,12 +4,15 @@
 \alias{usaqmindia_calendar}
 \title{Calendar plot for one city}
 \usage{
-usaqmindia_calendar(city = "Delhi")
+usaqmindia_calendar(cityplot = NULL)
 }
 \arguments{
-\item{city}{the city, "Delhi", "Chennai", "Kolkata", "Hyderabad", "Mumbai".}
+\item{cityplot}{the city, "Delhi", "Chennai", "Kolkata", "Hyderabad", "Mumbai".}
 }
 \description{
 Calendar plot for one city
+}
+\examples{
+usaqmindia_calendar(cityplot = "Chennai")
 }
 

@@ -3,19 +3,20 @@
 #' @import ggTimeSeries
 #' @import viridis
 #'
-#' @importFrom dplyr "%>%" filter group_by summarize
+#' @importFrom dplyr "%>%" filter_ group_by summarize
+#' @importFrom lazyeval interp
 #'
-#' @param city the city, "Delhi", "Chennai", "Kolkata", "Hyderabad", "Mumbai".
+#' @param cityplot the city, "Delhi", "Chennai", "Kolkata", "Hyderabad", "Mumbai".
 #'
 #' @return
 #' @export
 #'
 #' @examples
-#' usaqmindia_calendar(city = "Chennai)
-usaqmindia_calendar <- function(city = "Delhi"){
+#' usaqmindia_calendar(cityplot = "Chennai")
+usaqmindia_calendar <- function(cityplot = NULL){
   utils::data("pm25_india", package = "usaqmindia", envir = environment())
   pm25day <- pm25_india %>%
-    filter(city == city) %>%
+    filter_(interp(~ city == cityplot)) %>%
     group_by(day = as.Date(datetime)) %>%
     summarize(conc = mean(conc, na.rm = TRUE))
   # base plot
