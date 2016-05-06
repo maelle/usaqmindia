@@ -41,11 +41,19 @@ pm25_india %>% head(n = 20) %>% knitr::kable()
 | 2013-01-01 07:00:00 | Delhi |  285.0|
 | 2013-01-01 08:00:00 | Delhi |  354.9|
 
-Here is an example plot of daily average concentrations (see the code here):
+Here is an example plot of concentrations (see the code [here](R/redo_plot.R)):
 
 ``` r
 library("usaqmindia")
-redo_plot()
+usaqmindia_plot()
 ```
 
 ![](README_files/figure-markdown_github/unnamed-chunk-2-1.png)<!-- -->
+
+And this is a calendar plot of daily concentrations in one city using the [`ggTimeSeries`](https://github.com/Ather-Energy/ggTimeSeries) package (see the code [here](R/calendar.R)):
+
+``` r
+usaqmindia_calendar(city = "Hyderabad")
+```
+
+![](README_files/figure-markdown_github/unnamed-chunk-3-1.png)<!-- -->

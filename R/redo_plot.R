@@ -6,8 +6,8 @@
 #' @export
 #'
 #' @examples
-#' redo_plot()
-redo_plot <- function(){
+#' usaqmindia_plot()
+usaqmindia_plot <- function(){
   utils::data("pm25_india", package = "usaqmindia", envir = environment())
   p <- ggplot(pm25_india) +
       geom_point(aes(datetime, conc)) +

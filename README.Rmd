@@ -2,7 +2,6 @@
 title: "usaqmindia R package"
 author: "Maëlle Salmon"
 date: "`r Sys.Date()`"
-always_allow_html: yes
 output:
   md_document:
     variant: markdown_github
@@ -27,10 +26,17 @@ data("pm25_india")
 pm25_india %>% head(n = 20) %>% knitr::kable()
 ```
 
-Here is an example plot of daily average concentrations (see the code here):
+Here is an example plot of concentrations (see the code [here](R/redo_plot.R)):
 
 ```{r, message=FALSE, warning=FALSE}
 library("usaqmindia")
-redo_plot()
+usaqmindia_plot()
+
+```
+
+And this is a calendar plot of daily concentrations in one city using the [`ggTimeSeries`](https://github.com/Ather-Energy/ggTimeSeries) package (see the code [here](R/calendar.R)):
+
+```{r, message=FALSE, warning=FALSE}
+usaqmindia_calendar(city = "Hyderabad")
 
 ```
