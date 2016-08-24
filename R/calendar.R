@@ -34,5 +34,6 @@ usaqmindia_calendar <- function(cityplot = NULL){
     ylab(NULL)+
     scale_fill_viridis(option = "plasma",
                        limit = c(0, max(pm25day$conc)))  +
-    facet_wrap(~Year, ncol = 1)
+    facet_wrap(~Year, ncol = 1) +
+    ggtitle(paste0("PM2.5 concentrations calendar for ", cityplot))
 }
