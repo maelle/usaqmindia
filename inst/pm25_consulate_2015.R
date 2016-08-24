@@ -10,6 +10,7 @@ file <- read_csv("inst/extdata/jan-nov2015.csv", skip = 5,
                                "PM2.5_Delhi", "PM2.5_Chennai",
                                "PM2.5_Kolkata", "PM2.5_Mumbai",
                                "PM2.5_Hyderabad"),
+                 col_types = "ccnnnnn",
                  na = c("", "NA", "NoData", "-999",
                         "---", "InVld", "PwrFail"))
 

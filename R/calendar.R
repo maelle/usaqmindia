@@ -16,11 +16,12 @@
 usaqmindia_calendar <- function(cityplot = NULL){
   utils::data("pm25_india", package = "usaqmindia", envir = environment())
   pm25day <- pm25_india %>%
-    filter_(interp(~ city == cityplot)) %>%
+    filter_(lazyeval::interp(~ city == cityplot)) %>%
+    filter_(lazyeval::interp(~ !is.na(datetime))) %>%
     group_by(day = as.Date(datetime)) %>%
     summarize(conc = median(conc, na.rm = TRUE))
   # base plot
-  p1 <- ggplot_calendar_heatmap(
+  p1 <- ggTimeSeries::ggplot_calendar_heatmap(
     pm25day,
     'day',
     'conc'
