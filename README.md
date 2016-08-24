@@ -53,7 +53,7 @@ usaqmindia_plot()
 And this is a calendar plot of daily median concentrations in one city using the [`ggTimeSeries`](https://github.com/Ather-Energy/ggTimeSeries) package (see the code [here](R/calendar.R)):
 
 ``` r
-usaqmindia_calendar(cityplot = "Chennai")
+usaqmindia_calendar(cityplot = "Delhi")
 ```
 
 ![](README_files/figure-markdown_github/unnamed-chunk-3-1.png)

@@ -12,6 +12,9 @@ a ggplot graph
 \description{
 Re-do the time series plot for all cities
 }
+\details{
+For clarity a few values of 2000 are not shown for Delhi and Hyderabad.
+}
 \examples{
 usaqmindia_plot()
 }

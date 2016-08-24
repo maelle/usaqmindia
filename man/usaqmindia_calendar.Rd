@@ -12,6 +12,9 @@ usaqmindia_calendar(cityplot = NULL)
 \description{
 Calendar plot for one city
 }
+\details{
+For clarity a few values of 2000 are not shown for Delhi and Hyderabad.
+}
 \examples{
 usaqmindia_calendar(cityplot = "Chennai")
 }

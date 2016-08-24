@@ -7,7 +7,7 @@
 #' @importFrom lazyeval interp
 #'
 #' @param cityplot the city, "Delhi", "Chennai", "Kolkata", "Hyderabad", "Mumbai".
-#'
+#' @details For clarity a few values of 2000 are not shown for Delhi and Hyderabad.
 #' @return
 #' @export
 #'
@@ -15,7 +15,8 @@
 #' usaqmindia_calendar(cityplot = "Chennai")
 usaqmindia_calendar <- function(cityplot = NULL){
   utils::data("pm25_india", package = "usaqmindia", envir = environment())
-  pm25day <- pm25_india %>%
+  pm25day <- dplyr::filter_(pm25_india,
+                            lazyeval::interp(~conc < 1500)) %>%
     filter_(lazyeval::interp(~ city == cityplot)) %>%
     filter_(lazyeval::interp(~ !is.na(datetime))) %>%
     group_by(day = as.Date(datetime)) %>%
