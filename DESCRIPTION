@@ -1,13 +1,23 @@
 Package: usaqmindia
 Type: Package
-Title: Provides Data from the U.S. Embassy and Consulate Air Quality Monitors in
+Title: Data from the U.S. Embassy and Consulate Air Quality Monitors in
     India
 Version: 0.1.0
-uthors@R: person("Maëlle", "Salmon", email = "maelle.salmon@yahoo.se", role =
+Authors@R: person("Ma?lle", "Salmon", email = "maelle.salmon@yahoo.se", role =
     c("aut", "cre"))
-Description: More about what it does (maybe more than one line)
+Description: Provides Data from the U.S. Embassy and Consulate Air Quality Monitors in
+    India. Also provides code for two plots of the data.
 License: GPL (>= 2)
 LazyData: TRUE
 URL: http://github.com/masalmon/usaqmindia
 BugReports: http://github.com/masalmon/usaqmindia/issues
 RoxygenNote: 5.0.1
+Encoding: UTF-8
+Depends: R (>= 2.10),
+  ggplot2,
+  viridis,
+  ggTimeSeries
+Imports: dplyr,
+  lazyeval
+Suggests: testthat,
+  covr

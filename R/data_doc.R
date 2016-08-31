@@ -8,5 +8,5 @@
 #' @docType data
 #' @keywords data
 #' @examples data(pm25_india)
-#' View(pm25_india)
+#' str(pm25_india)
 NULL

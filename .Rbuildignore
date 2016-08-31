@@ -1,2 +1,9 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^CONDUCT\.md$
+README.Rmd
+README_files$
+inst/extdata
+inst/
+^\.travis\.yml$
+^appveyor\.yml$

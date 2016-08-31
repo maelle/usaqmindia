@@ -11,7 +11,7 @@ original source (U.S. Embassy and Consulates General in India air quality monito
 }
 \examples{
 data(pm25_india)
-View(pm25_india)
+str(pm25_india)
 }
 \keyword{data}
 

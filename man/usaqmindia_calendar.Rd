@@ -2,15 +2,18 @@
 % Please edit documentation in R/calendar.R
 \name{usaqmindia_calendar}
 \alias{usaqmindia_calendar}
-\title{Calendar plot for one city}
+\title{Calendar plot for one city (daily median concentration)}
 \usage{
 usaqmindia_calendar(cityplot = NULL)
 }
 \arguments{
 \item{cityplot}{the city, "Delhi", "Chennai", "Kolkata", "Hyderabad", "Mumbai".}
 }
+\value{
+a ggplot graph
+}
 \description{
-Calendar plot for one city
+Calendar plot for one city (daily median concentration)
 }
 \details{
 For clarity a few values of 2000 are not shown for Delhi and Hyderabad.

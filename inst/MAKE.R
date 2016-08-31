@@ -28,4 +28,4 @@ data_us <- data_us %>%
   mutate(conc = as.numeric(conc))
 write_csv(data_us, path = "inst/pm25USA.csv")
 pm25_india <- data_us
-save(pm25_india, file = "data/pm25_india.RData")
+save(pm25_india, file = "data/pm25_india.RData", compress = "xz")
