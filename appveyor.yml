@@ -14,6 +14,7 @@ install:
 environment:
   global:
     WARNINGS_ARE_ERRORS: 1
+    USE_RTOOLS: true
 
   matrix:
   - R_VERSION: stable
@@ -24,8 +25,12 @@ environment:
 
   - R_VERSION: devel
 
+GITHUB_PAT:
+    secure: zuFCb2IKZvA6E+eE5aSCdvaSd2Z60lgMFfJdtKGmqK67DA4l3Uz+VEPkLvrQiNam
+
 build_script:
   - travis-tool.sh install_deps
+  - travis-tool.sh install_github Ather-Energy/ggTimeSeries
 
 test_script:
   - travis-tool.sh run_tests

@@ -9,5 +9,8 @@ r:
   - release
   - devel
 
+r_github_packages:
+  - Ather-Energy/ggTimeSeries
+
 after_success:
   - Rscript -e 'library(covr); codecov()'
