@@ -1,7 +1,14 @@
-usaqmindia
-==========
+-   [Introduction to the data and the repo](#introduction-to-the-data-and-the-repo)
+-   [R package](#r-package)
+-   [Data format](#data-format)
+-   [Time series plot](#time-series-plot)
+-   [Calendar plot](#calendar-plot)
+-   [Contributing](#contributing)
 
 [![Build Status](https://travis-ci.org/masalmon/usaqmindia.svg?branch=master)](https://travis-ci.org/masalmon/usaqmindia) [![Build status](https://ci.appveyor.com/api/projects/status/lujc2gn88smyvhrq?svg=true)](https://ci.appveyor.com/project/masalmon/usaqmindia) [![codecov.io](https://codecov.io/github/masalmon/usaqmindia/coverage.svg?branch=master)](https://codecov.io/github/masalmon/usaqmindia?branch=master)
+
+Introduction to the data and the repo
+=====================================
 
 The U.S. Embassy and Consulates General in India maintain an air quality monitoring program with on-site measuring instruments and put the corresponding data [on this website](http://newdelhi.usembassy.gov/airqualitydata.html). There are csv files for 2013 and 2014, for 2015 except December which is in a pdf, and various csv/pdf for the months of the beginning of 2016.
 
@@ -9,12 +16,18 @@ In this repository I have made a copy of these files and provide a R code for wr
 
 *Useful even for non R users: You will find the raw data [in this folder](inst/extdata) and my wrangling code is [here](inst/pm25_consulate.R). The resulting csv is [here](inst/pm25USA.csv). I will try to update the repository as new data comes in on the embassy website.*
 
+R package
+=========
+
 I have made a R package out of the data so that my fellow R users can easily play with the data. The package imports [`ggTimeSeries`](https://github.com/Ather-Energy/ggTimeSeries) for doing the calendar plot. It can be installed this way:
 
 ``` r
 devtools::install_github("Ather-Energy/ggTimeSeries")
 devtools::install_github("masalmon/usaqmindia")
 ```
+
+Data format
+===========
 
 The data is in a long format:
 
@@ -48,6 +61,9 @@ pm25_india %>% head(n = 20) %>% knitr::kable()
 | 2013-01-01 07:00:00 | Delhi |  285.0|
 | 2013-01-01 08:00:00 | Delhi |  354.9|
 
+Time series plot
+================
+
 Below is an example plot of concentrations (see the code [here](R/redo_plot.R)). Check out the Diwali peaks!
 
 ``` r
@@ -57,6 +73,9 @@ usaqmindia_plot()
 
 ![](README_files/figure-markdown_github/unnamed-chunk-3-1.png)
 
+Calendar plot
+=============
+
 And this is a calendar plot of daily median concentrations in one city using the [`ggTimeSeries`](https://github.com/Ather-Energy/ggTimeSeries) package (see the code [here](R/calendar.R)):
 
 ``` r
@@ -64,3 +83,8 @@ usaqmindia_calendar(cityplot = "Delhi")
 ```
 
 ![](README_files/figure-markdown_github/unnamed-chunk-4-1.png)
+
+Contributing
+============
+
+Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
