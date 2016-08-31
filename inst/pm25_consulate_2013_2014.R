@@ -4,7 +4,8 @@
 for(name in c("inst/extdata/aqm2013.csv", "inst/extdata/aqm2014.csv")){
   file <- read_csv(name, skip = 2,
                    na = c("", "NA", "NoData", "-999"),
-                   col_names = FALSE)
+                   col_names = FALSE,
+                   col_types = "ccnnnnnnnnnnn")
   file <- file[2:nrow(file), 1:12]
   names(file) <- c("Date", "Time",
                    "PM2.5_Delhi", "PM2.5_Delhi_AQI", "PM2.5_Chennai", "PM2.5_CHN_AQI",

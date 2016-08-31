@@ -27,12 +27,7 @@ file <- file %>%
                                     "%Y-%m-%d I:M p",
                                     tz = "Asia/Kolkata")) %>%
   select(datetime, everything()) %>%
-  select(- Date, - Time) %>%
-  mutate(PM2.5_Delhi = as.character(PM2.5_Delhi)) %>%
-  mutate(PM2.5_Chennai = as.character(PM2.5_Chennai)) %>%
-  mutate(PM2.5_Kolkata = as.character(PM2.5_Kolkata)) %>%
-  mutate(PM2.5_Mumbai = as.character(PM2.5_Mumbai)) %>%
-  mutate(PM2.5_Hyderabad = as.character(PM2.5_Hyderabad))
+  select(- Date, - Time)
 
 data_us <- bind_rows(data_us, file)
 
@@ -44,7 +39,13 @@ file <- tbl_df(read.table("inst/extdata/aqifeb2016.csv", sep = ",",
                                         "PM2.5_Kolkata", "PM2.5_Mumbai",
                                         "PM2.5_Hyderabad"),
                           fill = TRUE, na.strings = TRUE,
-                          stringsAsFactors = FALSE))
+                          stringsAsFactors = FALSE))%>%
+  mutate(PM2.5_Chennai = as.numeric(PM2.5_Chennai),
+         PM2.5_Kolkata = as.numeric(PM2.5_Kolkata),
+         PM2.5_Hyderabad = as.numeric(PM2.5_Hyderabad),
+         PM2.5_Mumbai = as.numeric(PM2.5_Mumbai),
+         PM2.5_Delhi = as.numeric(PM2.5_Delhi))
+
 file <- file[2:nrow(file),]
 
 which24 <- which(grepl("24:00 AM", file$Time))
@@ -63,12 +64,7 @@ file <- file %>%
                                     "%Y-%m-%d I:M p",
                                     tz = "Asia/Kolkata")) %>%
   select(datetime, everything()) %>%
-  select(- Date, - Time) %>%
-  mutate(PM2.5_Delhi = as.character(PM2.5_Delhi)) %>%
-  mutate(PM2.5_Chennai = as.character(PM2.5_Chennai)) %>%
-  mutate(PM2.5_Kolkata = as.character(PM2.5_Kolkata)) %>%
-  mutate(PM2.5_Mumbai = as.character(PM2.5_Mumbai)) %>%
-  mutate(PM2.5_Hyderabad = as.character(PM2.5_Hyderabad))
+  select(- Date, - Time)
 
 data_us <- bind_rows(data_us, file)
 
@@ -97,13 +93,7 @@ file <- file %>%
   mutate(datetime = parse_date_time(datetime,
                                     "%Y-%m-%d I:M p",
                                     tz = "Asia/Kolkata")) %>%
-  select(datetime, everything()) %>%
-  select(- Date, - Time) %>%
-  mutate(PM2.5_Delhi = as.character(PM2.5_Delhi)) %>%
-  mutate(PM2.5_Chennai = as.character(PM2.5_Chennai)) %>%
-  mutate(PM2.5_Kolkata = as.character(PM2.5_Kolkata)) %>%
-  mutate(PM2.5_Mumbai = as.character(PM2.5_Mumbai)) %>%
-  mutate(PM2.5_Hyderabad = as.character(PM2.5_Hyderabad))
+  select(datetime, everything())
 
 data_us <- bind_rows(data_us, file)
 
@@ -133,12 +123,7 @@ file <- file %>%
                                     "%Y-%m-%d I:M p",
                                     tz = "Asia/Kolkata")) %>%
   select(datetime, everything()) %>%
-  select(- Date, - Time) %>%
-  mutate(PM2.5_Delhi = as.character(PM2.5_Delhi)) %>%
-  mutate(PM2.5_Chennai = as.character(PM2.5_Chennai)) %>%
-  mutate(PM2.5_Kolkata = as.character(PM2.5_Kolkata)) %>%
-  mutate(PM2.5_Mumbai = as.character(PM2.5_Mumbai)) %>%
-  mutate(PM2.5_Hyderabad = as.character(PM2.5_Hyderabad))
+  select(- Date, - Time)
 
 data_us <- bind_rows(data_us, file)
 
@@ -155,25 +140,13 @@ all_pm <- all_pm %>% separate(col = name,
                                        "PM2.5_Kolkata",
                                        "PM2.5_Hyderabad",
                                        "PM2.5_Mumbai",
-                                       "PM2.5_Delhi"))
+                                       "PM2.5_Delhi"))%>%
+  mutate(PM2.5_Chennai = as.numeric(PM2.5_Chennai),
+         PM2.5_Kolkata = as.numeric(PM2.5_Kolkata),
+         PM2.5_Hyderabad = as.numeric(PM2.5_Hyderabad),
+         PM2.5_Mumbai = as.numeric(PM2.5_Mumbai),
+         PM2.5_Delhi = as.numeric(PM2.5_Delhi))
 
-# we now have to translate missing
-all_pm <- all_pm %>%
-  mutate(PM2.5_Chennai = ifelse(grepl("---", PM2.5_Chennai), "NA", PM2.5_Chennai)) %>%
-  mutate(PM2.5_Kolkata = ifelse(grepl("---", PM2.5_Kolkata), "NA", PM2.5_Kolkata)) %>%
-  mutate(PM2.5_Hyderabad = ifelse(grepl("---", PM2.5_Hyderabad), "NA", PM2.5_Hyderabad)) %>%
-  mutate(PM2.5_Mumbai = ifelse(grepl("---", PM2.5_Mumbai), "NA", PM2.5_Mumbai)) %>%
-  mutate(PM2.5_Delhi = ifelse(grepl("---", PM2.5_Delhi), "NA", PM2.5_Delhi))%>%
-  mutate(PM2.5_Chennai = ifelse(grepl("PwrFail", PM2.5_Chennai), "NA", PM2.5_Chennai)) %>%
-  mutate(PM2.5_Kolkata = ifelse(grepl("PwrFail", PM2.5_Kolkata), "NA", PM2.5_Kolkata)) %>%
-  mutate(PM2.5_Hyderabad = ifelse(grepl("PwrFail", PM2.5_Hyderabad), "NA", PM2.5_Hyderabad)) %>%
-  mutate(PM2.5_Mumbai = ifelse(grepl("PwrFail", PM2.5_Mumbai), "NA", PM2.5_Mumbai)) %>%
-  mutate(PM2.5_Delhi = ifelse(grepl("InVld", PM2.5_Delhi), "NA", PM2.5_Delhi))%>%
-  mutate(PM2.5_Chennai = ifelse(grepl("InVld", PM2.5_Chennai), "NA", PM2.5_Chennai)) %>%
-  mutate(PM2.5_Kolkata = ifelse(grepl("InVld", PM2.5_Kolkata), "NA", PM2.5_Kolkata)) %>%
-  mutate(PM2.5_Hyderabad = ifelse(grepl("InVld", PM2.5_Hyderabad), "NA", PM2.5_Hyderabad)) %>%
-  mutate(PM2.5_Mumbai = ifelse(grepl("InVld", PM2.5_Mumbai), "NA", PM2.5_Mumbai)) %>%
-  mutate(PM2.5_Delhi = ifelse(grepl("---", PM2.5_Delhi), "NA", PM2.5_Delhi))
 
 all_pm <- all_pm %>%
   mutate(datetime = seq(from = ymd_hms("2016-05-01 01:00:00", tz = "Asia/Kolkata"),
@@ -194,25 +167,13 @@ all_pm <- all_pm %>% separate(col = name,
                                        "PM2.5_Kolkata",
                                        "PM2.5_Hyderabad",
                                        "PM2.5_Mumbai",
-                                       "PM2.5_Delhi"))
+                                       "PM2.5_Delhi"))%>%
+  mutate(PM2.5_Chennai = as.numeric(PM2.5_Chennai),
+         PM2.5_Kolkata = as.numeric(PM2.5_Kolkata),
+         PM2.5_Hyderabad = as.numeric(PM2.5_Hyderabad),
+         PM2.5_Mumbai = as.numeric(PM2.5_Mumbai),
+         PM2.5_Delhi = as.numeric(PM2.5_Delhi))
 
-# we now have to translate missing
-all_pm <- all_pm %>%
-  mutate(PM2.5_Chennai = ifelse(grepl("---", PM2.5_Chennai), "NA", PM2.5_Chennai)) %>%
-  mutate(PM2.5_Kolkata = ifelse(grepl("---", PM2.5_Kolkata), "NA", PM2.5_Kolkata)) %>%
-  mutate(PM2.5_Hyderabad = ifelse(grepl("---", PM2.5_Hyderabad), "NA", PM2.5_Hyderabad)) %>%
-  mutate(PM2.5_Mumbai = ifelse(grepl("---", PM2.5_Mumbai), "NA", PM2.5_Mumbai)) %>%
-  mutate(PM2.5_Delhi = ifelse(grepl("---", PM2.5_Delhi), "NA", PM2.5_Delhi))%>%
-  mutate(PM2.5_Chennai = ifelse(grepl("PwrFail", PM2.5_Chennai), "NA", PM2.5_Chennai)) %>%
-  mutate(PM2.5_Kolkata = ifelse(grepl("PwrFail", PM2.5_Kolkata), "NA", PM2.5_Kolkata)) %>%
-  mutate(PM2.5_Hyderabad = ifelse(grepl("PwrFail", PM2.5_Hyderabad), "NA", PM2.5_Hyderabad)) %>%
-  mutate(PM2.5_Mumbai = ifelse(grepl("PwrFail", PM2.5_Mumbai), "NA", PM2.5_Mumbai)) %>%
-  mutate(PM2.5_Delhi = ifelse(grepl("InVld", PM2.5_Delhi), "NA", PM2.5_Delhi))%>%
-  mutate(PM2.5_Chennai = ifelse(grepl("InVld", PM2.5_Chennai), "NA", PM2.5_Chennai)) %>%
-  mutate(PM2.5_Kolkata = ifelse(grepl("InVld", PM2.5_Kolkata), "NA", PM2.5_Kolkata)) %>%
-  mutate(PM2.5_Hyderabad = ifelse(grepl("InVld", PM2.5_Hyderabad), "NA", PM2.5_Hyderabad)) %>%
-  mutate(PM2.5_Mumbai = ifelse(grepl("InVld", PM2.5_Mumbai), "NA", PM2.5_Mumbai)) %>%
-  mutate(PM2.5_Delhi = ifelse(grepl("---", PM2.5_Delhi), "NA", PM2.5_Delhi))
 
 all_pm <- all_pm %>%
   mutate(datetime = seq(from = ymd_hms("2016-06-01 01:00:00", tz = "Asia/Kolkata"),
@@ -235,25 +196,13 @@ all_pm <- all_pm %>% separate(col = name,
                                        "PM2.5_Kolkata",
                                        "PM2.5_Hyderabad",
                                        "PM2.5_Mumbai",
-                                       "PM2.5_Delhi"))
+                                       "PM2.5_Delhi"))%>%
+  mutate(PM2.5_Chennai = as.numeric(PM2.5_Chennai),
+         PM2.5_Kolkata = as.numeric(PM2.5_Kolkata),
+         PM2.5_Hyderabad = as.numeric(PM2.5_Hyderabad),
+         PM2.5_Mumbai = as.numeric(PM2.5_Mumbai),
+         PM2.5_Delhi = as.numeric(PM2.5_Delhi))
 
-# we now have to translate missing
-all_pm <- all_pm %>%
-  mutate(PM2.5_Chennai = ifelse(grepl("---", PM2.5_Chennai), "NA", PM2.5_Chennai)) %>%
-  mutate(PM2.5_Kolkata = ifelse(grepl("---", PM2.5_Kolkata), "NA", PM2.5_Kolkata)) %>%
-  mutate(PM2.5_Hyderabad = ifelse(grepl("---", PM2.5_Hyderabad), "NA", PM2.5_Hyderabad)) %>%
-  mutate(PM2.5_Mumbai = ifelse(grepl("---", PM2.5_Mumbai), "NA", PM2.5_Mumbai)) %>%
-  mutate(PM2.5_Delhi = ifelse(grepl("---", PM2.5_Delhi), "NA", PM2.5_Delhi))%>%
-  mutate(PM2.5_Chennai = ifelse(grepl("PwrFail", PM2.5_Chennai), "NA", PM2.5_Chennai)) %>%
-  mutate(PM2.5_Kolkata = ifelse(grepl("PwrFail", PM2.5_Kolkata), "NA", PM2.5_Kolkata)) %>%
-  mutate(PM2.5_Hyderabad = ifelse(grepl("PwrFail", PM2.5_Hyderabad), "NA", PM2.5_Hyderabad)) %>%
-  mutate(PM2.5_Mumbai = ifelse(grepl("PwrFail", PM2.5_Mumbai), "NA", PM2.5_Mumbai)) %>%
-  mutate(PM2.5_Delhi = ifelse(grepl("InVld", PM2.5_Delhi), "NA", PM2.5_Delhi))%>%
-  mutate(PM2.5_Chennai = ifelse(grepl("InVld", PM2.5_Chennai), "NA", PM2.5_Chennai)) %>%
-  mutate(PM2.5_Kolkata = ifelse(grepl("InVld", PM2.5_Kolkata), "NA", PM2.5_Kolkata)) %>%
-  mutate(PM2.5_Hyderabad = ifelse(grepl("InVld", PM2.5_Hyderabad), "NA", PM2.5_Hyderabad)) %>%
-  mutate(PM2.5_Mumbai = ifelse(grepl("InVld", PM2.5_Mumbai), "NA", PM2.5_Mumbai)) %>%
-  mutate(PM2.5_Delhi = ifelse(grepl("---", PM2.5_Delhi), "NA", PM2.5_Delhi))
 
 all_pm <- all_pm %>%
   mutate(datetime = seq(from = ymd_hms("2016-07-01 01:00:00", tz = "Asia/Kolkata"),
