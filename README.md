@@ -9,16 +9,11 @@ In this repository I have made a copy of these files and provide a R code for wr
 
 *Useful even for non R users: You will find the raw data [in this folder](inst/extdata) and my wrangling code is [here](inst/pm25_consulate.R). The resulting csv is [here](inst/pm25USA.csv).*
 
-I have made a R package out of the data so that my fellow R users can easily play with the data. It can be installed this way:
-
-``` r
-devtools::install_github("masalmon/usaqmindia")
-```
-
-The package imports [`ggTimeSeries`](https://github.com/Ather-Energy/ggTimeSeries) for doing the calendar plot, so it needs to be installed this way:
+I have made a R package out of the data so that my fellow R users can easily play with the data. The package imports [`ggTimeSeries`](https://github.com/Ather-Energy/ggTimeSeries) for doing the calendar plot. It can be installed this way:
 
 ``` r
 devtools::install_github("Ather-Energy/ggTimeSeries")
+devtools::install_github("masalmon/usaqmindia")
 ```
 
 The data is in a long format:
@@ -60,7 +55,7 @@ library("usaqmindia")
 usaqmindia_plot()
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-4-1.png)
+![](README_files/figure-markdown_github/unnamed-chunk-3-1.png)
 
 And this is a calendar plot of daily median concentrations in one city using the [`ggTimeSeries`](https://github.com/Ather-Energy/ggTimeSeries) package (see the code [here](R/calendar.R)):
 
@@ -68,4 +63,4 @@ And this is a calendar plot of daily median concentrations in one city using the
 usaqmindia_calendar(cityplot = "Delhi")
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-5-1.png)
+![](README_files/figure-markdown_github/unnamed-chunk-4-1.png)
