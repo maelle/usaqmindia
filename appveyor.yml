@@ -31,6 +31,8 @@ environment:
 build_script:
   - travis-tool.sh install_deps
   - travis-tool.sh install_github Ather-Energy/ggTimeSeries
+  - travis-tool.sh install_github hadley/scales
+  - travis-tool.sh install_github hadley/ggplot2
 
 test_script:
   - travis-tool.sh run_tests
