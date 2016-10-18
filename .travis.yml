@@ -11,6 +11,8 @@ r:
 
 r_github_packages:
   - Ather-Energy/ggTimeSeries
+  - hadley/scales
+  - hadley/ggplot2
 
 after_success:
   - Rscript -e 'library(covr); codecov()'
