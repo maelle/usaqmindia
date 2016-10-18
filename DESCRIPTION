@@ -18,6 +18,7 @@ Depends: R (>= 2.10),
   viridis,
   ggTimeSeries
 Imports: dplyr,
-  lazyeval
+  lazyeval,
+  lubridate
 Suggests: testthat,
   covr
