@@ -22,7 +22,7 @@ usaqmindia_plot <- function(){
     geom_vline(xintercept = as.numeric(lubridate::ymd_hms("2015 11 11 20 00 00",
                                                           tz = "Asia/Kolkata"))) +
       geom_point(aes_string("datetime", "conc", col = "city")) +
-      facet_grid(city ~ ., scales = "free_y") +
+      facet_grid(city ~ .) +
       ggtitle("US Air Quality Monitoring in India",
               subtitle = "The vertical lines represent 8pm on Diwali each year.")+
       ylab(expression(paste("PM2.5 hourly concentration (", mu, "g/",m^3,")")))+
