@@ -26,6 +26,9 @@ data_us <- data_us %>%
 data_us <- data_us %>%
   mutate(city = gsub("PM2\\.5_", "", city)) %>%
   mutate(conc = as.numeric(conc))
-write_csv(data_us, path = "inst/pm25USA.csv")
 pm25_india <- data_us
 save(pm25_india, file = "data/pm25_india.RData", compress = "xz")
+data_us <- mutate(data_us,
+                  datetime = as.character(datetime))
+write_csv(data_us, path = "inst/pm25USA.csv")
+
