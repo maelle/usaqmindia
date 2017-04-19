@@ -24,8 +24,9 @@ file <- file %>%
   filter(!is.na(Date)) %>%
   mutate(datetime = paste(as.character(Date), Time)) %>%
   mutate(datetime = parse_date_time(datetime,
-                                    "%Y-%m-%d I:M p",
-                                    tz = "Asia/Kolkata")) %>%
+                                    "%Y-%m-%d I:M p")) %>%
+  mutate(datetime = force_tz(datetime,
+                             "Asia/Kolkata"))  %>%
   select(datetime, everything()) %>%
   select(- Date, - Time)
 

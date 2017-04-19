@@ -23,8 +23,9 @@ file <- file %>%
   filter(!is.na(Date)) %>%
   mutate(datetime = paste(as.character(Date), Time)) %>%
   mutate(datetime = parse_date_time(datetime,
-                                    "%Y-%m-%d I:M p",
-                                    tz = "Asia/Kolkata")) %>%
+                                    "%Y-%m-%d I:M p")) %>%
+  mutate(datetime = force_tz(datetime,
+                                    "Asia/Kolkata")) %>%
   select(datetime, everything()) %>%
   select(- Date, - Time)
 
@@ -63,7 +64,8 @@ all_pm <- all_pm %>% mutate(PM2.5_Chennai = as.numeric(PM2.5_Chennai),
 times_us <- bind_rows(lapply(out1, horaire_tableau))
 names(times_us) <- "datetime"
 times_us <- times_us %>%
-  mutate(datetime = as.POSIXct(datetime, origin = "1970-01-01", tz = "Asia/Kolkata"))
+  mutate(datetime = as.POSIXct(datetime, origin = "1970-01-01",
+                               tz = "Asia/Kolkata"))
 
 all_pm <-  cbind(all_pm, times_us)
 names(all_pm)[6] <- "datetime"
