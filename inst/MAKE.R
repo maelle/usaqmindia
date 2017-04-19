@@ -3,7 +3,7 @@ library("tabulizer")
 library("dplyr")
 library("tidyr")
 library("lubridate")
-
+library("ropenaq")
 data_us <- NULL
 
 source("inst/functions_pdf_transformation.R")
