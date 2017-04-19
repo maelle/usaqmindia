@@ -11,7 +11,7 @@ License: GPL (>= 2)
 LazyData: TRUE
 URL: http://github.com/masalmon/usaqmindia
 BugReports: http://github.com/masalmon/usaqmindia/issues
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1
 Encoding: UTF-8
 Depends: R (>= 2.10),
   ggplot2,

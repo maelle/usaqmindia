@@ -14,4 +14,3 @@ data(pm25_india)
 str(pm25_india)
 }
 \keyword{data}
-

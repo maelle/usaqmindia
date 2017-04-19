@@ -21,4 +21,3 @@ For clarity a few values of 2000 are not shown for Delhi and Hyderabad.
 \examples{
 usaqmindia_calendar(cityplot = "Chennai")
 }
-

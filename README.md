@@ -10,7 +10,7 @@
 Introduction to the data and the repo
 =====================================
 
-The U.S. Embassy and Consulates General in India maintain an air quality monitoring program with on-site measuring instruments and put the corresponding data [on this website](http://newdelhi.usembassy.gov/airqualitydata.html). There are csv files for 2013 and 2014, for 2015 except December which is in a pdf, and various csv/pdf for the months of the beginning of 2016.
+The U.S. Embassy and Consulates General in India maintain an air quality monitoring program with on-site measuring instruments and put the corresponding data [on this website](http://newdelhi.usembassy.gov/airqualitydata.html). There are csv files for 2013 and 2014, for 2015 except December which is in a pdf, and various csv/pdf for the months of the beginning of 2016. From August 2016 I chose to use OpenAQ and in particular [ropenaq](https://github.com/ropenscilabs/ropenaq) to get new data.
 
 In this repository I have made a copy of these files and provide a R code for wrangling them to get a single csv with all measures for Delhi, Mumbai, Kolkata, Hyderabad and Chennai. Refer to original source for licensing questions.
 
@@ -51,15 +51,15 @@ pm25_india %>% head(n = 20) %>% knitr::kable()
 | 2013-01-01 09:00:00 | Delhi |  111.0|
 | 2013-01-01 10:00:00 | Delhi |  112.0|
 | 2013-01-01 11:00:00 | Delhi |  129.4|
-| 2013-01-01 00:00:00 | Delhi |  184.1|
-| 2013-01-01 01:00:00 | Delhi |  284.8|
-| 2013-01-01 02:00:00 | Delhi |  372.3|
-| 2013-01-01 03:00:00 | Delhi |  456.7|
-| 2013-01-01 04:00:00 | Delhi |  404.8|
-| 2013-01-01 05:00:00 | Delhi |  328.1|
-| 2013-01-01 06:00:00 | Delhi |  274.4|
-| 2013-01-01 07:00:00 | Delhi |  285.0|
-| 2013-01-01 08:00:00 | Delhi |  354.9|
+| 2013-01-01 12:00:00 | Delhi |  184.1|
+| 2013-01-01 13:00:00 | Delhi |  284.8|
+| 2013-01-01 14:00:00 | Delhi |  372.3|
+| 2013-01-01 15:00:00 | Delhi |  456.7|
+| 2013-01-01 16:00:00 | Delhi |  404.8|
+| 2013-01-01 17:00:00 | Delhi |  328.1|
+| 2013-01-01 18:00:00 | Delhi |  274.4|
+| 2013-01-01 19:00:00 | Delhi |  285.0|
+| 2013-01-01 20:00:00 | Delhi |  354.9|
 
 Time series plot
 ================
